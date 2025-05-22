@@ -5,7 +5,7 @@ export async function GET(req: NextRequest) {
     const { searchParams } = new URL(req.url);
     const q = searchParams.get("q")?.trim().toLowerCase();
 
-    if (!q || q.length < 2) return Response.json({ courses: [], professors: [] });
+    if (!q || q.length == 0) return Response.json({ courses: [], professors: [] });
 
     const [courses, professors] = await Promise.all([
         prisma.course.findMany({

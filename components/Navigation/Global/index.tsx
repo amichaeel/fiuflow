@@ -4,8 +4,8 @@ import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
+import Search from "@/components/Search";
 import { Menu } from "lucide-react";
-import Search from "./Search";
 
 export default function Navbar() {
     return (

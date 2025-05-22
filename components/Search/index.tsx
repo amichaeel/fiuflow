@@ -1,3 +1,5 @@
+"use client";
+
 import { useState, useEffect, useRef, useCallback } from "react";
 import { Course, Professor } from '@prisma/client';
 import { Input } from "@/components/ui/input";

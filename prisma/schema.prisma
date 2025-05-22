@@ -7,20 +7,87 @@ datasource db {
   url      = env("POSTGRES_URL")
 }
 
+model User {
+  id            String           @id @default(cuid())
+  name          String?
+  email         String?          @unique
+  emailVerified DateTime?
+  image         String?
+  createdAt     DateTime         @default(now())
+  updatedAt     DateTime         @updatedAt
+  accounts      Account[]
+  favorites     FavoriteCourse[]
+  reviews       Review[]
+  sessions      Session[]
+  takenCourses  TakenCourse[]
+}
+
+model Account {
+  id                String  @id @default(cuid())
+  userId            String
+  type              String
+  provider          String
+  providerAccountId String
+  refresh_token     String?
+  access_token      String?
+  expires_at        Int?
+  token_type        String?
+  scope             String?
+  id_token          String?
+  session_state     String?
+  user              User    @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@unique([provider, providerAccountId])
+}
+
+model Session {
+  id           String   @id @default(cuid())
+  sessionToken String   @unique
+  userId       String
+  expires      DateTime
+  user         User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+}
+
+model FavoriteCourse {
+  id        String   @id @default(cuid())
+  userId    String
+  courseId  String
+  createdAt DateTime @default(now())
+  course    Course   @relation(fields: [courseId], references: [id])
+  user      User     @relation(fields: [userId], references: [id])
+
+  @@unique([userId, courseId])
+}
+
+model TakenCourse {
+  id        String   @id @default(cuid())
+  userId    String
+  courseId  String
+  status    String
+  createdAt DateTime @default(now())
+  course    Course   @relation(fields: [courseId], references: [id])
+  user      User     @relation(fields: [userId], references: [id])
+
+  @@unique([userId, courseId])
+}
+
 model Course {
-  id                          String   @id @default(cuid())
-  career                      String
-  code                        String
-  college                     String
-  courseNumber                String
-  creditsAcademicProgress     Float?
-  description                 String?
-  effectiveStartDate          DateTime?
-  effectiveEndDate            DateTime?
-  longName                    String
-  name                        String
-  status                      String
-  subjectCode                 String
+  id                      String           @id @default(cuid())
+  career                  String
+  code                    String
+  college                 String
+  courseNumber            String
+  creditsAcademicProgress Float?
+  description             String?
+  effectiveStartDate      DateTime?
+  effectiveEndDate        DateTime?
+  longName                String
+  name                    String
+  status                  String
+  subjectCode             String
+  favorites               FavoriteCourse[]
+  reviews                 Review[]
+  takenBy                 TakenCourse[]
 }
 
 model Professor {
@@ -28,4 +95,24 @@ model Professor {
   name      String
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
+  reviews   Review[]
+}
+
+model Review {
+  id             String    @id @default(cuid())
+  userId         String
+  courseId       String
+  professorId    String
+  comment        String
+  liked          Boolean
+  createdAt      DateTime  @default(now())
+  easyRating     Int?
+  usefulRating   Int?
+  clearRating    Int?
+  engagingRating Int?
+  course         Course    @relation(fields: [courseId], references: [id])
+  professor      Professor @relation(fields: [professorId], references: [id])
+  user           User      @relation(fields: [userId], references: [id])
+
+  @@unique([userId, courseId, professorId])
 }
