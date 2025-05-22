@@ -57,15 +57,15 @@ export default function Navbar() {
 
     return (
         <nav className="w-full border-b bg-white sticky top-0 z-50">
-            <div className="container mx-auto max-w-6xl flex h-16 items-center justify-between px-4">
+            <div className="container mx-auto max-w-6xl gap-8 flex h-16 items-center justify-between px-4">
                 {/* Logo */}
-                <Link href="/" className="flex items-center gap-1 font-semibold text-xl">
+                <Link href="/" className="hidden md:flex items-center gap-1 font-semibold text-2xl">
                     <span className="text-gray-900">FIU</span>
-                    <span className="text-[#B7862C]">Flow</span>
+                    <span className="text-[#B6862C]">Flow</span>
                 </Link>
 
                 {/* Desktop Search */}
-                <div className="hidden md:flex flex-1 flex-col mx-8 relative" ref={dropdownRef}>
+                <div className="flex flex-1 flex-col relative" ref={dropdownRef}>
                     <Input
                         type="search"
                         value={query}
@@ -77,7 +77,7 @@ export default function Navbar() {
                         placeholder="Search courses, subjects, or professors"
                     />
                     {dropdownOpen && (
-                        <div className="absolute left-0 top-full w-full bg-white shadow-md z-50 flex flex-col border border-gray-200 max-h-[400px] overflow-y-auto">
+                        <div className="absolute left-0 top-full w-full bg-white shadow-md z-50 flex flex-col max-h-[400px] overflow-y-auto">
                             {fetching && (
                                 <div className="px-3 py-2 border-t border-gray-100">
                                     <Spinner />

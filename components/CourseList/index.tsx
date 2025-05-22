@@ -76,23 +76,21 @@ export default function CourseList({ pageSize = 20 }: { pageSize?: number }) {
                 <thead>
                     <tr>
                         <th
-                            className="py-2 px-4 cursor-pointer"
-                            onClick={() => handleSort("code")}
+                            className="py-2 px-4 text-[#081E3F] font-semibold underline"
                         >
-                            Course Code{" "}
+                            <span className="cursor-pointer" onClick={() => handleSort("code")}>Course Code{" "}</span>
                             {sortBy === "code" && (sortOrder === "asc" ? "↑" : "↓")}
                         </th>
                         <th
-                            className="py-2 px-4 cursor-pointer"
-                            onClick={() => handleSort("name")}
+                            className="py-2 px-4 text-[#081E3F] font-semibold underline"
                         >
-                            Course Name{" "}
+                            <span className="cursor-pointer" onClick={() => handleSort("name")}>Course Name{" "}</span>
                             {sortBy === "name" && (sortOrder === "asc" ? "↑" : "↓")}
                         </th>
-                        <th className="py-2 px-4">Ratings</th>
-                        <th className="py-2 px-4">Useful</th>
-                        <th className="py-2 px-4">Easy</th>
-                        <th className="py-2 px-4">Liked</th>
+                        <th className="py-2 px-4 text-[#081E3F] font-semibold underline">Ratings</th>
+                        <th className="py-2 px-4 text-[#081E3F] font-semibold underline">Useful</th>
+                        <th className="py-2 px-4 text-[#081E3F] font-semibold underline">Easy</th>
+                        <th className="py-2 px-4 text-[#081E3F] font-semibold underline">Liked</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -106,8 +104,11 @@ export default function CourseList({ pageSize = 20 }: { pageSize?: number }) {
                         }
                         const code = course.code.slice(0, digIndex) + " " + course.code.slice(digIndex);
                         return (
-                            <tr key={index}>
-                                <td className="py-2 cursor-pointer text-[#B7862C] font-semibold underline px-4">
+                            <tr
+                                key={index}
+                                className={index % 2 === 0 ? "bg-gray-100" : "bg-white"}
+                            >
+                                <td className="py-2 text-[#B6862C] font-semibold underline px-4">
                                     <Link href={`/course/${course.code}`}>
                                         {code}
                                     </Link>

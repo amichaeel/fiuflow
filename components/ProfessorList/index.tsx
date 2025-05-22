@@ -75,22 +75,24 @@ export default function ProfessorList({ pageSize = 20 }: { pageSize?: number }) 
                 <thead>
                     <tr>
                         <th
-                            className="py-2 px-4 cursor-pointer"
-                            onClick={() => handleSort("name")}
+                            className="py-2 px-4 text-[#081E3F] font-semibold underline"
                         >
-                            Professor Name{" "}
+                            <span className='cursor-pointer' onClick={() => handleSort("name")}>Professor Name{" "}</span>
                             {sortBy === "name" && (sortOrder === "asc" ? "↑" : "↓")}
                         </th>
-                        <th className="py-2 px-4">Ratings</th>
-                        <th className="py-2 px-4">Clear</th>
-                        <th className="py-2 px-4">Engaging</th>
-                        <th className="py-2 px-4">Liked</th>
+                        <th className="py-2 px-4 text-[#081E3F] font-semibold underline">Ratings</th>
+                        <th className="py-2 px-4 text-[#081E3F] font-semibold underline">Clear</th>
+                        <th className="py-2 px-4 text-[#081E3F] font-semibold underline">Engaging</th>
+                        <th className="py-2 px-4 text-[#081E3F] font-semibold underline">Liked</th>
                     </tr>
                 </thead>
                 <tbody>
                     {professors.map((prof, index) => (
-                        <tr key={index}>
-                            <td className="py-2 px-4 text-[#B7862C] font-semibold underline cursor-pointer">
+                        <tr
+                            key={index}
+                            className={index % 2 === 0 ? "bg-gray-100" : "bg-white"}
+                        >
+                            <td className="py-2 px-4 text-[#B6862C] font-semibold underline">
                                 <Link href={`/professor/${prof.id}`}>
                                     {prof.name}
                                 </Link>
