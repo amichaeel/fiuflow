@@ -2,10 +2,10 @@
 
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
-import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
 import Search from "@/components/Search";
 import { Menu } from "lucide-react";
+import UserButton from "../User";
 
 export default function Navbar() {
     return (
@@ -21,12 +21,8 @@ export default function Navbar() {
                 <Search />
 
                 {/* Desktop Nav */}
-                <div className="hidden md:flex items-center gap-4">
-                    <Avatar>
-                        <AvatarImage src="/avatar.png" alt="User" />
-                        <AvatarFallback>U</AvatarFallback>
-                    </Avatar>
-                </div>
+                <UserButton />
+
 
                 {/* Mobile Nav */}
                 <div className="md:hidden flex items-center gap-2">
