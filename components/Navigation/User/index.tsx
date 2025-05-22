@@ -15,6 +15,7 @@ import {
     DialogTitle,
 } from "@/components/ui/dialog";
 import { useSession, signOut } from "next-auth/react";
+import { usePathname } from "next/navigation";
 import LoginCard from "@/components/Auth/LoginCard";   // Adjust import as needed
 import SignupCard from "@/components/Auth/SignupCard"; // Adjust import as needed
 
@@ -22,12 +23,13 @@ export default function UserButton() {
     const { data: session } = useSession();
     const [isLogin, setIsLogin] = useState(true);
     const [open, setOpen] = useState(false);
+    const pathname = usePathname();
 
     if (!session?.user) {
         return (
             <Dialog open={open} onOpenChange={setOpen}>
                 <DialogTrigger asChild>
-                    <span className="md:hidden inline text-accent text-sm font-semibold cursor-pointer hover:underline">
+                    <span className={`${pathname == "/" ? "text-accent" : "text-accent-foreground"} inline text-accent text-sm font-semibold cursor-pointer hover:underline`}>
                         Log in
                     </span>
                 </DialogTrigger>
