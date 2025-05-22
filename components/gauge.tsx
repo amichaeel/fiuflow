@@ -29,7 +29,7 @@ export function Gauge({ numerator, denominator }: GaugeProps) {
     const percentage = denominator === 0 ? 0 : Math.round((numerator / denominator) * 100)
 
     const chartData = [
-        { browser: "safari", visitors: percentage, fill: "var(--color-safari)" }, // Using direct fill
+        { browser: "safari", visitors: percentage, fill: "#B7862C" }, // Using direct fill
     ]
 
     return (
@@ -60,7 +60,7 @@ export function Gauge({ numerator, denominator }: GaugeProps) {
                     dataKey="visitors"
                     angleAxisId={0}
                     background
-                    cornerRadius={10}
+                    cornerRadius={0}
                 />
                 <PolarRadiusAxis tick={false} tickLine={false} axisLine={false}>
                     <Label

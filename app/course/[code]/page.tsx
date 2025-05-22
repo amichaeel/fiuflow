@@ -55,26 +55,28 @@ const CoursePage = () => {
 
     return (
         <main className="w-full">
-            <div
-                className="flex flex-col justify-end pt-60 pb-4 text-white px-4 bg-blue-900">
+            <div className="flex flex-col justify-end pt-60 pb-4 text-white px-4 bg-blue-900">
                 <div className="w-full max-w-6xl mx-auto">
                     <h1 className="text-2xl font-bold mb-2">{course.code}</h1>
-                    <h1 className="text-4xl mb-2">{course.longName}</h1>
+                    <h1 className="text-4xl max-w-xl mb-2">{course.longName}</h1>
                 </div>
             </div>
-            <div className="flex items-center w-full px-4 py-8">
-                <div className="grid grid-cols-5 gap-10 mx-auto w-full max-w-6xl">
+            <div className="flex items-center w-full px-4 py-4 bg-white">
+                <div className="flex flex-col-reverse md:grid md:grid-cols-5 gap-10 mx-auto w-full max-w-6xl">
+
                     <div className="col-span-3">
-                        <p className="mb-4">{course.description}</p>
+                        <p>{course.description}</p>
                     </div>
-                    <div className="flex rounded-l-full flex-row h-50 justify-between bg-white shadow-sm col-span-2 relative bottom-30">
-                        <div className="relative h-full">
+
+                    <div className="flex md:rounded-l-full h-50 justify-between bg-white md:shadow-sm col-span-2 md:relative md:bottom-30">
+                        <div className="md:relative h-full">
                             <Gauge numerator={874} denominator={1000} />
                         </div>
                         <div className="">
                             test
                         </div>
                     </div>
+
                 </div>
             </div>
         </main>
