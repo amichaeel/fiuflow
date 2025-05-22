@@ -6,6 +6,7 @@ import { Slider } from "@/components/ui/slider";
 import { Button } from "@/components/ui/button";
 import React from "react";
 import CourseList from "@/components/CourseList";
+import ProfessorList from "@/components/ProfessorList";
 
 const COURSE_LEVELS = [
     { label: "1XXX", value: "1" },
@@ -62,11 +63,11 @@ export default function Explore() {
                             <CourseList />
                         </TabsContent>
                         <TabsContent value="professors">
-                            <div>Professors view will go here.</div>
+                            <ProfessorList />
                         </TabsContent>
                     </Tabs>
-                    <aside className="w-80 shrink-0">
-                        <div className="bg-white shadow p-6 sticky top-20">
+                    <aside className="md:w-80 w-full shrink-0">
+                        <div className="bg-white shadow w-full p-6 sticky top-20">
                             <h2 className="font-semibold text-lg mb-6">Filter your results</h2>
                             {/* Course code */}
                             <div className="mb-6">
