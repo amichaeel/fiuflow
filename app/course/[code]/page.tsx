@@ -10,6 +10,7 @@ type Course = {
     id: string;
     code: string;
     name: string;
+    longName: string;
     description?: string;
     status: string;
 };
@@ -58,7 +59,7 @@ const CoursePage = () => {
                 className="flex flex-col justify-end pt-60 pb-4 text-white px-4 bg-blue-900">
                 <div className="w-full max-w-6xl mx-auto">
                     <h1 className="text-2xl font-bold mb-2">{course.code}</h1>
-                    <h1 className="text-4xl mb-2">{course.name}</h1>
+                    <h1 className="text-4xl mb-2">{course.longName}</h1>
                 </div>
             </div>
             <div className="flex items-center w-full px-4 py-8">
