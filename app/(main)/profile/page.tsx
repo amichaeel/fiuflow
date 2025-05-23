@@ -1,7 +1,6 @@
 import { getAuthSession } from "@/lib/auth";
 import { redirect } from "next/navigation";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
-import Link from "next/link";
 import { Button } from "@/components/ui/button";
 
 export default async function ProfilePage() {
