@@ -108,7 +108,7 @@ export default function CourseList({ pageSize = 20 }: { pageSize?: number }) {
                                 key={index}
                                 className={index % 2 === 0 ? "bg-gray-100" : "bg-white"}
                             >
-                                <td className="py-2 text-[#B6862C] font-semibold underline px-4">
+                                <td className="py-2 text-[#00B7D5] font-semibold underline px-4">
                                     <Link href={`/course/${course.code}`}>
                                         {code}
                                     </Link>

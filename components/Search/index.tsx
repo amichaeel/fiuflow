@@ -74,7 +74,7 @@ export default function Search() {
                         <Link
                             key={course.id}
                             href={`/course/${course.code}`}
-                            className="flex items-center gap-2 px-3 py-2 text-[#B7862C] hover:bg-blue-600 hover:text-white transition-colors cursor-pointer border-t border-gray-100 first:border-none"
+                            className="flex items-center gap-2 px-3 py-2 text-[#00B7D5] hover:bg-blue-600 hover:text-white transition-colors cursor-pointer border-t border-gray-100 first:border-none"
                         >
                             <Book className="h-4 w-4" />
                             <span className="text-sm">{course.code} – {course.name}</span>
@@ -85,7 +85,7 @@ export default function Search() {
                         <Link
                             key={prof.id}
                             href={`/professor/${prof.id}`}
-                            className="flex items-center gap-2 px-3 py-2 text-green-600 hover:bg-blue-600 hover:text-white transition-colors cursor-pointer border-t border-gray-100"
+                            className="flex items-center gap-2 px-3 py-2 text-[#CC0066] hover:bg-blue-600 hover:text-white transition-colors cursor-pointer border-t border-gray-100"
                         >
                             <User className="h-4 w-4" />
                             <span className="text-sm">{prof.name}</span>

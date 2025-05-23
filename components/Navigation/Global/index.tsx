@@ -14,7 +14,7 @@ export default function Navbar() {
                 {/* Logo */}
                 <Link href="/" className="hidden md:flex items-center gap-1 font-semibold text-2xl">
                     <span className="text-gray-900">FIU</span>
-                    <span className="text-[#B6862C]">Flow</span>
+                    <span className="text-[#00B7D5]">Flow</span>
                 </Link>
 
                 {/* Desktop Search */}

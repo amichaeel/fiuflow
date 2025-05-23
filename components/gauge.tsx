@@ -29,7 +29,7 @@ export function Gauge({ numerator, denominator }: GaugeProps) {
     const percentage = denominator === 0 ? 0 : Math.round((numerator / denominator) * 100)
 
     const chartData = [
-        { browser: "safari", visitors: percentage, fill: "#B7862C" }, // Using direct fill
+        { browser: "safari", visitors: percentage, fill: "#00B7D5" }, // Using direct fill
     ]
 
     return (

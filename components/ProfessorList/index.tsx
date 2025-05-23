@@ -92,7 +92,7 @@ export default function ProfessorList({ pageSize = 20 }: { pageSize?: number }) 
                             key={index}
                             className={index % 2 === 0 ? "bg-gray-100" : "bg-white"}
                         >
-                            <td className="py-2 px-4 text-[#B6862C] font-semibold underline">
+                            <td className="py-2 px-4 text-[#CC0066] font-semibold underline">
                                 <Link href={`/professor/${prof.id}`}>
                                     {prof.name}
                                 </Link>

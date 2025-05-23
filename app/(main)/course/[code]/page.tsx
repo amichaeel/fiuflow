@@ -81,19 +81,32 @@ const CoursePage = () => {
             </div>
 
             <div className="flex items-center w-full px-4 py-4 bg-white">
-                <div className="flex flex-col-reverse md:grid md:grid-cols-5 gap-10 mx-auto w-full max-w-6xl">
+                <div className="flex flex-col-reverse md:grid md:grid-cols-5 gap-10 mx-auto w-full max-w-6xl relative">
+                    {/* Description */}
                     <div className="col-span-3">
                         <p>{course.description}</p>
                     </div>
 
-                    <div className="flex md:rounded-l-full h-[200px] justify-between bg-white md:shadow-sm col-span-2 md:relative md:-translate-y-8">
-                        <div className="md:relative h-full">
+                    {/* Absolute Gauge only on md+, in separate div so it's NOT counted in height */}
+                    <div className="hidden md:block col-span-2 relative">
+                        <div className="absolute top-0 right-0 -translate-y-30 w-full h-[200px] bg-white shadow-sm rounded-l-full flex justify-between">
+                            <div className="h-full flex items-center justify-center">
+                                <Gauge numerator={874} denominator={1000} />
+                            </div>
+                            <div className="p-4 text-gray-600">test</div>
+                        </div>
+                    </div>
+
+                    {/* Mobile Gauge (in flow) */}
+                    <div className="block md:hidden col-span-2 w-full h-[200px] bg-white flex justify-between">
+                        <div className="h-full flex items-center justify-center">
                             <Gauge numerator={874} denominator={1000} />
                         </div>
                         <div className="p-4 text-gray-600">test</div>
                     </div>
                 </div>
             </div>
+
         </main>
     );
 };
