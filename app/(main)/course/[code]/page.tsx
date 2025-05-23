@@ -38,45 +38,60 @@ const CoursePage = () => {
             .finally(() => setLoading(false));
     }, [code]);
 
-    if (loading) return (
-        <div className="flex flex-col items-center justify-center h-screen">
-            <Spinner />
-        </div>
-    )
-    if (error) return (
-        <div className="flex flex-col items-center justify-center h-screen">
-            <p>That course doesn&apos;t exist!</p>
-            <Button onClick={() => window.location.href = "/explore"} className="mt-4 cursor-pointer">
-                Home
-            </Button>
-        </div>
-    )
+    if (loading)
+        return (
+            <div className="flex flex-col items-center justify-center h-screen">
+                <Spinner />
+            </div>
+        );
+
+    if (error)
+        return (
+            <div className="flex flex-col items-center justify-center h-screen">
+                <p>That course doesn&apos;t exist!</p>
+                <Button
+                    onClick={() => (window.location.href = "/explore")}
+                    className="mt-4 cursor-pointer"
+                >
+                    Home
+                </Button>
+            </div>
+        );
+
     if (!course) return null;
 
     return (
         <main className="w-full">
-            <div className="flex flex-col justify-end pt-60 pb-4 text-white px-4 bg-blue-900">
-                <div className="w-full max-w-6xl mx-auto">
+            <div className="relative flex flex-col justify-end pt-60 pb-4 text-white px-4 min-h-[300px] overflow-hidden">
+                <div
+                    className="absolute inset-0 bg-cover bg-center z-[-2] bg-[#001d4a]"
+                    style={{
+                        backgroundImage: "url('/statue_2d.png')",
+                        backgroundPositionY: "30%",
+                        backgroundBlendMode: "luminosity",
+                    }}
+                />
+                {/* Overlay */}
+                <div className="absolute inset-0 bg-black/50 z-[-1]" />
+
+                <div className="relative z-10 w-full max-w-6xl mx-auto">
                     <h1 className="text-2xl font-bold mb-2">{course.code}</h1>
                     <h1 className="text-4xl max-w-xl mb-2">{course.longName}</h1>
                 </div>
             </div>
+
             <div className="flex items-center w-full px-4 py-4 bg-white">
                 <div className="flex flex-col-reverse md:grid md:grid-cols-5 gap-10 mx-auto w-full max-w-6xl">
-
                     <div className="col-span-3">
                         <p>{course.description}</p>
                     </div>
 
-                    <div className="flex md:rounded-l-full h-50 justify-between bg-white md:shadow-sm col-span-2 md:relative md:bottom-30">
+                    <div className="flex md:rounded-l-full h-[200px] justify-between bg-white md:shadow-sm col-span-2 md:relative md:-translate-y-8">
                         <div className="md:relative h-full">
                             <Gauge numerator={874} denominator={1000} />
                         </div>
-                        <div className="">
-                            test
-                        </div>
+                        <div className="p-4 text-gray-600">test</div>
                     </div>
-
                 </div>
             </div>
         </main>

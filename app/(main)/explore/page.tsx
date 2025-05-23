@@ -40,12 +40,13 @@ export default function Explore() {
     return (
         <main>
             <div
-                className="flex justify-end pt-18 pb-4 bg-black/40"
+                className="flex justify-end pt-18 pb-4 bg-[#001d4a]"
                 style={{
-                    backgroundImage: "url('/scratches.png')",
-                    backgroundRepeat: "repeat",
-                    backgroundSize: "auto",
-                    backgroundBlendMode: "color-dodge",
+                    backgroundImage: "url('statue.jpg')",
+                    backgroundSize: "cover",
+                    backgroundBlendMode: "overlay",
+                    backgroundPositionY: "30%",
+
                 }}
             >
                 <div className="container max-w-6xl px-4 mx-auto flex">

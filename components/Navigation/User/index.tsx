@@ -29,7 +29,7 @@ export default function UserButton() {
         return (
             <Dialog open={open} onOpenChange={setOpen}>
                 <DialogTrigger asChild>
-                    <span className={`${pathname == "/" ? "text-accent" : "text-accent-foreground"} inline text-accent text-sm font-semibold cursor-pointer hover:underline`}>
+                    <span className={`${pathname == "/" ? "text-accent md:hidden" : "text-accent-foreground"} inline text-accent text-sm font-semibold cursor-pointer hover:underline`}>
                         Log in
                     </span>
                 </DialogTrigger>
