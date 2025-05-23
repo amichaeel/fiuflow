@@ -16,7 +16,7 @@ export default async function ProfilePage() {
                 <div className="max-w-6xl mx-auto flex items-center gap-6">
                     <Avatar className="h-36 w-36 cursor-pointer">
                         {session.user.image ? (
-                            <AvatarImage src={session.user.image} alt="User avatar" className="h-36 w-36" />
+                            <AvatarImage src={session.user?.image} alt="User avatar" className="h-36 w-36" referrerPolicy="no-referrer" />
                         ) : (
                             <AvatarFallback className="text-4xl h-36 w-36">
                                 {session.user.name ? session.user.name.charAt(0).toUpperCase() + session.user.name.split(" ")[1].charAt(0) : "?"}

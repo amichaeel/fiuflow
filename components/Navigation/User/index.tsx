@@ -51,7 +51,7 @@ export default function UserButton() {
             <DropdownMenuTrigger asChild>
                 <Avatar className="cursor-pointer">
                     {session.user.image ? (
-                        <AvatarImage src={session.user.image} alt="User avatar" />
+                        <AvatarImage src={session.user.image} alt="User avatar" referrerPolicy="no-referrer" />
                     ) : (
                         <AvatarFallback className="text-xs">
                             {session.user.name ? session.user.name.charAt(0).toUpperCase() + session.user.name.split(" ")[1].charAt(0) : "?"}

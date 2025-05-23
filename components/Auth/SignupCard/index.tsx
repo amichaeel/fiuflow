@@ -3,7 +3,7 @@
 import { useState } from "react";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
-import { SiFacebook, SiGoogle } from "@icons-pack/react-simple-icons";
+import { SiGoogle } from "@icons-pack/react-simple-icons";
 import { signIn } from "next-auth/react";
 
 export default function SignupCard({ toggle }: { toggle: () => void }) {
@@ -112,16 +112,19 @@ export default function SignupCard({ toggle }: { toggle: () => void }) {
                 Sign Up
             </Button>
             <div className="text-center text-gray-600 font-medium mb-4">OR</div>
-            <Button disabled className="w-full bg-[#3b5998] hover:bg-[#334d84] text-white font-semibold mb-2">
+            {/* <Button disabled className="w-full bg-[#3b5998] hover:bg-[#334d84] text-white font-semibold mb-2">
                 <span className="mr-2">
                     <SiFacebook />
                 </span>{" "}
                 Continue with Facebook
-            </Button>
-            <Button disabled className="w-full bg-[#4285F4] hover:bg-[#357ae8] text-white font-semibold">
+            </Button> */}
+            <Button
+                onClick={() => signIn("google", { callbackUrl: "/explore" })}
+                className="w-full bg-[#4285F4] hover:bg-[#357ae8] text-white font-semibold"
+            >
                 <span className="mr-2">
                     <SiGoogle />
-                </span>{" "}
+                </span>
                 Continue with Google
             </Button>
             <p className="text-xs text-center text-gray-500 mt-4">
