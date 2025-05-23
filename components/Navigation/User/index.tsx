@@ -53,8 +53,8 @@ export default function UserButton() {
                     {session.user.image ? (
                         <AvatarImage src={session.user.image} alt="User avatar" />
                     ) : (
-                        <AvatarFallback>
-                            {session.user.name?.charAt(0).toUpperCase() ?? "?"}
+                        <AvatarFallback className="text-xs">
+                            {session.user.name ? session.user.name.charAt(0).toUpperCase() + session.user.name.split(" ")[1].charAt(0) : "?"}
                         </AvatarFallback>
                     )}
                 </Avatar>
