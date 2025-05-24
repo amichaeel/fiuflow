@@ -7,6 +7,7 @@ import { Spinner } from "@/components/ui/spinner";
 import { Button } from "@/components/ui/button";
 import { Gauge } from "@/components/gauge";
 import { ChevronDown } from "lucide-react";
+import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
 
 type CourseSection = {
     classNumber: string;
@@ -144,82 +145,86 @@ const TabbedSectionView = ({ sections }: TabbedSectionViewProps) => {
     return (
         <div className="w-full mt-12">
             <div className="max-w-6xl mx-auto bg-white">
-                <div className="flex justify-between items-stretch border">
-                    <h2 className="text-3xl font-bold p-4 -2">Course Schedule</h2>
-                    <div className="bg-gray-200 px-6 flex items-center">
-                        <ChevronDown />
-                    </div>
-                </div>
-
-                {/* Term tabs */}
-                <div className="flex w-full justify-around">
-                    {terms.map((term) => (
-                        <button
-                            key={term}
-                            onClick={() => setSelectedTerm(term)}
-                            className={`cursor-pointer px-4 py-2 h-15 w-full text-lg font-medium shadow ${selectedTerm === term
-                                ? "bg-white text-black"
-                                : "bg-gray-200 text-gray-700 hover:bg-gray-300"
-                                }`}
-                        >
-                            {term}
-                        </button>
-                    ))}
-                </div>
-
-                {/* Table or fallback */}
-                <div className="overflow-x-auto">
-                    {filtered.length > 0 ? (
-                        <table className="w-full text-left border">
-                            <thead>
-                                <tr className="text-sm text-gray-600">
-                                    <th className="py-3 px-4">Section</th>
-                                    <th className="py-3 px-4">Class</th>
-                                    <th className="py-3 px-4">Days</th>
-                                    <th className="py-3 px-4">Time</th>
-                                    <th className="py-3 px-4">Date</th>
-                                    <th className="py-3 px-4">Instructor</th>
-                                    <th className="py-3 px-4">Location</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                {filtered.map((section, index) => (
-                                    <tr key={section.classNumber} className={`text-sm border ${index % 2 === 0 ? "bg-gray-100" : "bg-white"}`}>
-                                        <td className="py-2 px-4">
-                                            {section.section.split('\n')[0]}
-                                        </td>
-                                        <td className="py-2 px-4">{section.classNumber}</td>
-                                        <td className="py-2 px-4">
-                                            {["Mo", "Tu", "We", "Th", "Fri", "S", "Su"].map((day, index) => (
-                                                <span
-                                                    key={index}
-                                                    className={section.time.includes(day) ? "font-bold" : "text-gray-400"}
-                                                >
-                                                    {day}{" "}
-                                                </span>
-                                            ))}
-                                        </td>
-                                        <td className="py-2 px-4">{section.time.split(" ").slice(1)}</td>
-                                        <td className="py-2 px-4">
-                                            {section.startDate && section.endDate
-                                                ? `${new Date(section.startDate).toLocaleDateString()} - ${new Date(
-                                                    section.endDate
-                                                ).toLocaleDateString()}`
-                                                : "TBA"}
-                                        </td>
-
-                                        <td className="py-2 px-4"><Link href={`/professor/${section.instructor}`} className="underline text-[#CC0066]">{section.instructor}</Link></td>
-                                        <td className="py-2 px-4">{section.location}</td>
-                                    </tr>
-                                ))}
-                            </tbody>
-                        </table>
-                    ) : (
-                        <div className="text-gray-600 text-sm py-4 px-2 border rounded-md bg-gray-50">
-                            No sections found for {selectedTerm}.
+                <Accordion type="single" collapsible defaultValue="course-schedule">
+                    <AccordionItem value="course-schedule" className="border-b">
+                        <div className="flex justify-between items-stretch border ">
+                            <h2 className="text-3xl font-bold p-4 -2">Course Schedule</h2>
+                            <AccordionTrigger className="bg-gray-200 px-6 flex items-center rounded-none cursor-pointer hover:bg-gray-300"></AccordionTrigger>
                         </div>
-                    )}
-                </div>
+
+                        {/* Term tabs */}
+                        <AccordionContent>
+                            <div className="flex w-full border justify-around">
+                                {terms.map((term) => (
+                                    <button
+                                        key={term}
+                                        onClick={() => setSelectedTerm(term)}
+                                        className={`cursor-pointer px-4 py-2 h-15 w-full text-lg font-medium ${selectedTerm === term
+                                            ? "bg-white text-black"
+                                            : "bg-gray-200 text-gray-700 hover:bg-gray-300"
+                                            }`}
+                                    >
+                                        {term}
+                                    </button>
+                                ))}
+                            </div>
+
+                            {/* Table or fallback */}
+                            <div className="overflow-x-auto">
+                                {filtered.length > 0 ? (
+                                    <table className="w-full text-left border">
+                                        <thead>
+                                            <tr className="text-sm text-gray-600">
+                                                <th className="py-3 px-4">Section</th>
+                                                <th className="py-3 px-4">Class</th>
+                                                <th className="py-3 px-4">Days</th>
+                                                <th className="py-3 px-4">Time</th>
+                                                <th className="py-3 px-4">Date</th>
+                                                <th className="py-3 px-4">Instructor</th>
+                                                <th className="py-3 px-4">Location</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            {filtered.map((section, index) => (
+                                                <tr key={section.classNumber} className={`text-sm border ${index % 2 === 0 ? "bg-gray-100" : "bg-white"}`}>
+                                                    <td className="py-2 px-4">
+                                                        {section.section.split('\n')[0]}
+                                                    </td>
+                                                    <td className="py-2 px-4">{section.classNumber}</td>
+                                                    <td className="py-2 px-4">
+                                                        {["Mo", "Tu", "We", "Th", "Fri", "S", "Su"].map((day, index) => (
+                                                            <span
+                                                                key={index}
+                                                                className={section.time.includes(day) ? "font-bold" : "text-gray-400"}
+                                                            >
+                                                                {day}{" "}
+                                                            </span>
+                                                        ))}
+                                                    </td>
+                                                    <td className="py-2 px-4">{section.time.split(" ").slice(1).join(" ").replace("-", " - ")}</td>
+                                                    <td className="py-2 px-4">
+                                                        {section.startDate && section.endDate
+                                                            ? `${new Date(section.startDate).toLocaleDateString()} - ${new Date(
+                                                                section.endDate
+                                                            ).toLocaleDateString()}`
+                                                            : "TBA"}
+                                                    </td>
+
+                                                    <td className="py-2 px-4"><Link href={`/professor/${section.instructor}`} className="underline text-[#CC0066]">{section.instructor}</Link></td>
+                                                    <td className="py-2 px-4">{section.location}</td>
+                                                </tr>
+                                            ))}
+                                        </tbody>
+                                    </table>
+                                ) : (
+                                    <div className="text-gray-600 text-sm py-4 px-2 border rounded-md bg-gray-50">
+                                        No sections found for {selectedTerm}.
+                                    </div>
+                                )}
+                            </div>
+                        </AccordionContent>
+                    </AccordionItem>
+                </Accordion>
             </div>
         </div >
     );
