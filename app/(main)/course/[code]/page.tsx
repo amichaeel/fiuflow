@@ -6,7 +6,6 @@ import { useParams } from "next/navigation";
 import { Spinner } from "@/components/ui/spinner";
 import { Button } from "@/components/ui/button";
 import { Gauge } from "@/components/gauge";
-import { ChevronDown } from "lucide-react";
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
 
 type CourseSection = {
