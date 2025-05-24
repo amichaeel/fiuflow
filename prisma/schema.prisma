@@ -91,6 +91,25 @@ model Course {
   favorites               FavoriteCourse[]
   reviews                 Review[]
   takenBy                 TakenCourse[]
+  sections                CourseSection[]
+}
+
+model CourseSection {
+  id          String   @id @default(cuid())
+  classNumber String
+  courseId    String
+  section     String
+  term        String
+  time        String
+  location    String
+  instructor  String
+  startDate   DateTime?
+  endDate     DateTime?
+  campus      String
+  course      Course   @relation(fields: [courseId], references: [id])
+
+  @@index([term])
+  @@unique([classNumber, term])
 }
 
 model Professor {

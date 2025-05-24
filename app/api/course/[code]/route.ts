@@ -10,6 +10,9 @@ export async function GET(req: NextRequest) {
             code,
             status: "Active",
         },
+        include: {
+            sections: true, // 👈 include related course sections
+        },
     });
 
     if (!course) {

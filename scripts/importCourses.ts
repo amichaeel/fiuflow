@@ -7,7 +7,7 @@ const prisma = new PrismaClient()
 async function main() {
     const courses: { career: any; code: any; college: any; courseNumber: any; creditsAcademicProgress: number; description: any; effectiveStartDate: Date | null; effectiveEndDate: Date | null; longName: any; name: any; status: any; subjectCode: any }[] = []
 
-    fs.createReadStream('data/fiu_courses.csv')
+    fs.createReadStream('data/summer25/courses.csv')
         .pipe(csv())
         .on('data', (row) => {
             courses.push({
